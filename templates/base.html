@@ -202,7 +202,7 @@
                 <ion-icon name="location"></ion-icon>
 
                 <span class="footer-link-text">
-                  2751 S Parker Rd, Aurora, CO 80014, United States
+                  2751 Dublin Mall Rd, Dublin
                 </span>
               </address>
             </li>
@@ -240,34 +240,22 @@
             </li>
 
             <li>
-              <a href="#" class="footer-link">
+              <a href="{%url 'cart'%}" class="footer-link">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
 
                 <span class="footer-link-text">View Cart</span>
               </a>
             </li>
 
-            <li>
-              <a href="#" class="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
+            
 
-                <span class="footer-link-text">Wishlist</span>
-              </a>
-            </li>
+            
 
             <li>
-              <a href="#" class="footer-link">
+              <a href="{% url 'logout' %}" class="footer-link">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
 
-                <span class="footer-link-text">Compare</span>
-              </a>
-            </li>
-
-            <li>
-              <a href="#" class="footer-link">
-                <ion-icon name="chevron-forward-outline"></ion-icon>
-
-                <span class="footer-link-text">New Products</span>
+                <span class="footer-link-text">Logout</span>
               </a>
             </li>
 
