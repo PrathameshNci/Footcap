@@ -73,23 +73,26 @@ def handle_signup(request):
         return HttpResponse("404 error") 
     
 def order_now(request):
-    if request.method == 'POST':
-        prod_id1 = request.POST.get("id")
-        p= Prod.objects.get(pk=prod_id1)
-        
-        
-        
-        now = datetime.datetime.now()
-        date_string = now.strftime("%Y%m%d%H%M%S")
-        date1 = int(date_string)
-        o= Order(prod_id=p.pk, quantity=1, user_id=request.user.pk, order_main_id=date1, status='Ordered')
-        
-       
-        # c= Cartitem(prod_id=p.pk, quantity=1, user_id=request.user.pk)
-        # c.save()
-        o.save()
-        
-        return redirect('home')    
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            prod_id1 = request.POST.get("id")
+            p= Prod.objects.get(pk=prod_id1)
+            
+            
+            
+            now = datetime.datetime.now()
+            date_string = now.strftime("%Y%m%d%H%M%S")
+            date1 = int(date_string)
+            o= Order(prod_id=p.pk, quantity=1, user_id=request.user.pk, order_main_id=date1, status='Ordered')
+            
+           
+            # c= Cartitem(prod_id=p.pk, quantity=1, user_id=request.user.pk)
+            # c.save()
+            o.save()
+            
+            return redirect('home')   
+        else:
+            return HttpResopnce('404 error')
     else:
 
         return HttpResponse("Login To Order")   
@@ -102,13 +105,16 @@ def my_orders(request):
         return HttpResponse("Login To Check")  
     
 def add_cart(request):
-    if request.method == 'POST':
-        id = request.POST.get("id")
-        p= Prod.objects.get(pk=id)
-        c= CartItem(prod_id=p.pk, quantity=1, user_id=request.user.pk)
-        c.save()
-        print(p)
-        return redirect('home')    
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            id = request.POST.get("id")
+            p= Prod.objects.get(pk=id)
+            c= CartItem(prod_id=p.pk, quantity=1, user_id=request.user.pk)
+            c.save()
+            print(p)
+            return redirect('home')   
+        else:
+            return HttpResopnce('404 error')    
     else:
 
         return HttpResponse("Login TO Add Cart")   
