@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+
+  <main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" style="background-image: url({{p.img.url}})">
+        <div class="container">
+
+          <h2 class="h1 hero-title">
+            {{p.name}} <strong>{{p.scat.cat.name}}-{{p.scat.name}}</strong>
+          </h2>
+
+          <p class="hero-text">
+            Price- ${{p.price}}
+          </p>
+
+          <button class="btn btn-primary">
+            <form action="{% url 'order_now' %}" method="post">
+                {% csrf_token %}
+              <input type="hidden" name="id" value="{{p.pk}}">
+              <button type="submit" class="btn btn-primary">Shop Now</button>
+                </form>
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+      </section>
+
+{% endblock %}

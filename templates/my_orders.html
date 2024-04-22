@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<main>
+    <article>
+
+      <!-- 
+        - #HERO
+      -->
+
+      <section class="section hero" style="background-image: url({% static './assets/images/hero-banner.png' %})">
+        <div class="container">
+
+          <h2 class="h1 hero-title">
+            New Summer <strong>Shoes Collection</strong>
+          </h2>
+
+          <p class="hero-text">
+            Competently expedite alternative benefits whereas leading-edge catalysts for change. Globally leverage
+            existing an
+            expanded array of leadership.
+          </p>
+
+          <button class="btn btn-primary">
+            <span>Shop Now</span>
+
+            <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
+          </button>
+
+        </div>
+      </section>
+
+
+
+      
+      <div style="display: flex; justify-content: center; padding: 5vh;"><h2  class="h2 section-title">My Orders</h2></div>
+
+<section class="section service">
+    
+    <div class="container">
+        {% for item in o %}
+      <ul class="service-list" style="padding-top: 5vh;">
+
+        <li class="service-item">
+          <div class="service-card">
+
+            <div class="">
+              <img src="{{item.prod.img.url}}" width="53" height="28" loading="lazy" alt="Service icon">
+            </div>
+
+            <div>
+              <h3 class="h4 card-title">Name</h3>
+
+              <p class="card-text">
+                {{item.prod.name}}
+              </p>
+            </div>
+
+          </div>
+        </li>
+
+        <li class="service-item">
+          <div class="service-card">
+
+            <!-- <div class="card-icon">
+              <img src="{% static './assets/images/service-2.png' %}" width="43" height="35" loading="lazy" alt="Service icon">
+            </div> -->
+
+            <div>
+              <h3 class="h4 card-title">Price</h3>
+
+              <p class="card-text">
+                {{item.prod.price}}
+              </p>
+            </div>
+
+          </div>
+        </li>
+
+        <li class="service-item">
+          <div class="service-card">
+
+            <!-- <div class="card-icon">
+              <img src="{% static './assets/images/service-3.png' %}" width="40" height="40" loading="lazy" alt="Service icon">
+            </div> -->
+
+            <div>
+              <h3 class="h4 card-title">Quantity</h3>
+
+              <p class="card-text">
+                {{item.quantity}}, Size-{{item.prod.size}}
+              </p>
+            </div>
+
+          </div>
+        </li>
+
+        <li class="service-item">
+          <div class="service-card">
+
+            <!-- <div class="card-icon">
+              <img src="{% static './assets/images/service-4.png' %}" width="40" height="40" loading="lazy" alt="Service icon">
+            </div> -->
+
+            <div>
+              <h3 class="h4 card-title">Status</h3>
+
+              <p class="card-text">
+                {{item.status}}
+              </p>
+            </div>
+
+          </div>
+        </li>
+
+      </ul>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% endblock %}
