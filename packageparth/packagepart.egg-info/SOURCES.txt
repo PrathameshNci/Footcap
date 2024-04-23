@@ -1,0 +1,7 @@
+setup.py
+packagepart.egg-info/PKG-INFO
+packagepart.egg-info/SOURCES.txt
+packagepart.egg-info/dependency_links.txt
+packagepart.egg-info/requires.txt
+packagepart.egg-info/top_level.txt
+packageparth/__init__.py
